@@ -1,0 +1,35 @@
+---
+// Import Base Layout
+import { literal } from 'astro/zod';
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+
+// Import styles
+import '../styles/myStyles.css'
+
+const pageTitle = 'About';
+
+// local data
+const professions = ['designer', 'coder', 'human'];
+
+
+---
+
+<BaseLayout pageTitle={pageTitle} >
+
+	<h1>{pageTitle}</h1>
+    <h2>I am ....</h2>
+
+    <ul>
+        {
+            professions.map(job => 
+            
+            <li>{job}</li>
+        
+
+        )
+        }
+
+    </ul>
+
+</BaseLayout>

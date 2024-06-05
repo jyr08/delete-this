@@ -1,0 +1,32 @@
+---
+import { InvalidFrontmatterInjectionError } from "astro/dist/core/errors/errors-data";
+import BaseLayout from "./BaseLayout.astro";
+
+const allPosts = await Astro.glob('../pages/posts/*.md');
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+    <img src={frontmatter.teaser} alt="">
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.date}</p>
+
+    
+    <slot/>
+
+    <h2>See All Posts</h2>
+    <ul>
+        {
+            allPosts.map(post => 
+            <li>
+                <a href={post.url}>
+                    {post.frontmatter.title}
+                    </a>
+                    </li>
+
+        ) }
+    </ul>
+
+
+</BaseLayout>
